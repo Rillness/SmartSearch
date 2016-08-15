@@ -1,0 +1,38 @@
+<% include ../partials/header.ejs %>
+<br>
+<a href="/"><i class="home icon" style="margin-left : 7px"></i>Home</a>
+<br>
+<form action="/wiki-search" class="ui input">
+  <input type="text" placeholder="Find another topic" style="margin-left : 10px" size="25" class="ui input" name="wikiSearch">
+  <button class="ui basic button tiny" style="margin-left : 8px">Topic</button>
+
+</form>
+<br>
+<br>
+<div class="ui container" style="margin-bottom : 30px">
+  <a href="/wiki-search/<%= name %>/saved" class="ui inverted button green tiny" id="saver"><i class="save icon" style="color : blue"></i>Save for further reading</a>
+  <h1><%= name %></h1>
+  <div class="someClass">
+    <%- body %>
+  </div>
+
+
+</div>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("div.someClass a").click(function(e) {
+      var txt = $(e.target).text();
+      $("div.someClass a").attr('href', '/wiki-search/?wikiSearch=' + txt);
+  });
+  $("#saver").click(function(){
+    $("#saver").attr('style', 'color : blue');
+  });
+});
+</script>
+
+
+
+
+
+<% include ../partials/footer.ejs %>

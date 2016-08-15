@@ -1,0 +1,43 @@
+<% include ../partials/header.ejs %>
+<br>
+<a href="/"><i class="home icon" style="margin-left : 7px"></i>Home</a>
+<br>
+<form action="/question-search" class="ui input">
+  <input type="text" placeholder="Ask another question." style="margin-left : 10px" size="25" class="ui input" name="wikiSearch">
+  <button class="ui basic button tiny" style="margin-left : 8px">Question</button>
+</form>
+<br>
+<br>
+<div class="ui container" style="margin-bottom : 30px">
+
+  <div style="color : blue">
+      <h1>Question Asked : </h1> <h5><%= query %></h5>
+  </div>
+
+  <%for(var a = 0; a < result.queryresult.pod.length; a++){%>
+      <%var pod = result.queryresult.pod[a];%>
+
+      <%var heading = (pod.$.title);%>
+    <h2><%= heading %></h2>
+      <%for(var b = 0; b < pod.subpod.length; b++){%>
+
+        <%var subpod = pod.subpod[b];%>
+
+          <%for(var c = 0; c < subpod.plaintext.length; c++){%>
+
+              <%var text = subpod.plaintext[c];%>
+              <%var writings = ('\t', text);%>
+              <h4><%= writings %></h4>
+          <%}%>
+      <%}%>
+  <%}%>
+
+
+</div>
+
+
+
+
+
+
+<% include ../partials/footer.ejs %>

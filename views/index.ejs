@@ -1,0 +1,70 @@
+<% include ../partials/header.ejs %>
+<br>
+<div class="ui container">
+  <strong>
+    <p style="margin-left : 130px">Search for any topic, or article.  Save the Topics you like, and use it to gain your knowledge.</p>
+  </strong>
+  <h1 style="">SmartSearch</h1>
+
+<form action="" method="get" id="form-search">
+  <div class="ui input">
+      <input type="text" placeholder="Enter Any Question, or Topic you want to know about." style="margin-left : 10px" size="100" class="ui input" class="ui input" id="searched" name="wikiSearch">
+  </div>
+  <br>
+  <br>
+
+  <button  class="ui basic button tiny" style="margin-left : 8px" id="article">Topic</button>
+
+  <button class="ui basic button tiny" style="margin-left : 8px" id="question">Question</button>
+
+</form>
+<br>
+<a href="/delete" class="ui button blue">I Read Them All</a>
+<!-- LIST OF SAVED TOPICS -->
+  <h3>Saved Topics</h3>
+  <ul>
+
+    <!-- SINGLE LIST TAG -->
+<%searches.forEach(function(search){%>
+          <div class="testClass">
+    <li>
+      <h3>Topic : <a href="/wiki-search/?wikiSearch=<%=search.title%>"  id="topic"><%=search.title%></a><a href="/delete/<%= search._id%>" style="display : inline; margin-left : 10px; color : red" id="remove"><i class="remove icon"></i></a> </h3>
+    </li>
+    <!-- SINGLE LIST TAG -->
+<%});%>
+  </ul>
+<!-- LIST OF SAVED TOPICS  -->
+        </div>
+</div>
+
+
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+$(document).ready(function(){
+
+      $("#article").click(function(){
+      $('#form-search').attr('action', '/wiki-search/');
+      });
+      $("#question").click(function(){
+      $('#form-search').attr('action', '/question-search/');
+      });
+      $('#form-search').keydown(function(e){
+        if(e.which == 13){
+          e.preventDefault();
+          $('#question').attr('class', 'ui basic button tiny red');
+          $('#article').attr('class', 'ui basic button tiny red');
+        }
+    });
+    $("div.testClass #topic").click(function(e) {
+        var txt = $(e.target).text();
+    // $("div.someClass #remove").attr('href', '/wiki-search/?wikiSearch=' + txt);
+    });
+
+});
+</script>
+
+
+
+
+
+<% include ../partials/footer.ejs %>

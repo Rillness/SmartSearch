@@ -1,0 +1,26 @@
+{
+  "name": "smart_search",
+  "version": "1.0.0",
+  "description": "An application that lets you search for Wolfram Alpha, and Wikipedia applications.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Farhan Rahman",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "colors": "^1.1.2",
+    "ejs": "^2.5.1",
+    "express": "^4.14.0",
+    "mediawiki-api": "^0.1.8",
+    "mediawiki-js": "^0.1.0",
+    "method-override": "^2.3.6",
+    "mongoose": "^4.5.9",
+    "node-wikipedia": "0.0.2",
+    "node-wolfram": "0.0.1",
+    "request": "^2.74.0",
+    "wikipedia-js": "0.0.6",
+    "wikiq": "0.0.4"
+  }
+}
